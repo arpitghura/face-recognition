@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Face Recognition
+{% endblock %}
+
+{% block main %}
+
+<div class="col-8 m-auto p-2 rounded text-center">
+  {%if message %}
+  <p class="font-weight-bold text-dark">{{message}}</p>
+  {%endif%}
+</div>
+
+<div style="width:220;height:240;">
+  <div class="text-center" id="loading">
+    Please Wait! The Camera is Starting up...
+  </div>
+  <canvas style="position: absolute; left: 0%;z-index: -1; top:0%;height: 480px;width: 640px;" id="canvas"></canvas>
+
+  <button id="stop" onclick="stop()" style="display:none">Stop</button>
+
+  <video id="player" style="position: sticky;height: 640;width: 480;z-index: -1;" autoplay></video>
+  <br>
+
+  <button id="capture" style="align-content: center;position: absolute;border-radius: 100px; left: 47%; top:50%;" class="btn btn-primary" onclick="capture()"> Capture</button>
+
+  <form action="/facerecog" method="post"  enctype="multipart/form-data" >
+    <input type="text" required="true" placeholder ="Username" class="form-control" id="username" name="username" style="align-content: center;position: absolute;width:20%;border-radius: 100px; left: 35%; top:50%;display: none;"><br>
+    <input type="text" id="pic" name="pic" style="display:none">
+
+    <button id="scan" style="align-content: center;position: absolute;border-radius: 100px;display: none; left: 52%; top:50%;" class="btn btn-primary">Scan</button>
+  </form>
+</div>
+
+<script>
+  const player = document.getElementById('player');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  const captureButton = document.getElementById('capture');
+  const scan = document.getElementById('scan');
+  const img = document.getElementById('pic');
+  const name = document.getElementById('username');
+  const loading = document.getElementById('loading');
+
+  const vgaconstraints = {
+  video: {width: {exact: 720}, height: {exact: 480}},
+  };
+
+  captureButton.style.display="none";
+
+  function capture(){
+    canvas.style.position="relative";
+    canvas.style.left="0%";
+    canvas.style.top="0%";
+    canvas.style.width = "720px";
+    canvas.style.height = "480px"
+    context.drawImage(player, 0, 0, canvas.width, canvas.height);
+    player.style.display="none";
+    captureButton.style.display="none";
+    scan.style.display="block";
+    name.style.display="block";
+
+    cap = canvas.toDataURL('image/png').split(",")[1];
+    img.value=cap;
+    stop();
+  }
+  function stop(){
+    player.srcObject.getVideoTracks().forEach(track => track.stop());
+  }
+
+  navigator.mediaDevices.getUserMedia(vgaconstraints)
+    .then((stream) => {
+      loading.style.display="none";
+      // Attach the video stream to the video element and autoplay.
+      player.srcObject = stream;
+      setTimeout(() => {
+        captureButton.style.display="block";
+      }, 1000);
+    });
+</script>
+</html>
+{% endblock %}

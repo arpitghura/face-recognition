@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+}
+.app-container {
+    border: 1px solid red;
+    padding: 15px;
+    border-radius: 15px;
+  }
+  #video {
+    height: 50%;
+    width: 90%;
+    border: 1px solid white;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    background-color: #000;
+    align-items: center;
+    height: 100vh;
+    width: 95vw;
+    color: #fff;
+  }

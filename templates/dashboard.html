@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+{% if 'user' in session %}
+<h1 class="brand-name">Hello {{session['user'].get('username')}} </h1>
+{% else %}
+<h1>Hello Guest </h1>
+{% endif %}
+
+<a class="btn btn-md btn-primary" href="/facesetup">Setup Face Recognition</a>
+<a class="btn btn-md btn-danger" href='/logout'>Logout</a>
+<br>
+{% if 'image' in session['user'] %}
+    <a class="btn btn-md btn-success mt-3" href="/facerecog">Login using Face</a>
+{% endif %}
+
+<div class="container text-left border border-dark rounded m-2 p-3">
+    <div class="col-8">
+        <h3 class="heading font-weight-bold text-success">Some Features</h3>
+        <ul class="m-3 font-weight-bold">
+            <li>You can setup your face id using `Setup Face Recognition`</li>
+            <li>You can login with your Face Id</li>
+            <li>All your data are stored securely.</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
