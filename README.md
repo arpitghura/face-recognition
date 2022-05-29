@@ -59,6 +59,6 @@ The project is build using `python` language. There are certain libraries that a
 
 Username : demoforengage
 
-Email : demo@engage2022
+Email : demo@engage2022.com
 
 Password : engage2022
