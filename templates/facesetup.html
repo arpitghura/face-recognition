@@ -6,18 +6,34 @@
 
 {% block main %}
 
-{%if message == 1%}
-<h3 class="bg-warning text-dark w-50 m-auto">Image is not clear</h3>
-{%endif%}
+
+<div class="col-8 m-auto p-1 rounded text-center" id="message-box">
+  {%if message == 1%}
+    <div class="alert alert-success" role="alert">
+      <p class="text-dark font-weight-bold">Image is not clear</p>
+    </div>
+    <script>
+      setTimeout(()=>{
+        const msgBox = document.getElementById('message-box');
+        msgBox.style.display = 'none';
+      }, 3000);
+    </script>
+  {% endif %}
+</div>
 
 <div style="width:220;height:240;">
+  <div class="text-center" id="loading">
+    Please Wait! The Camera is Starting up...
+  </div>
   <div class="text-center bg-warning w-50 rounded text-dark p-2" id="face-already-setup">
     {% if imagemsg %}
     <p class="text-dark font-weight-bold">{{ imagemsg }}</p>
     <a href='/dashboard' class="btn btn-primary">Go to Dashboard</a>
     {% else %}
-
-    <p class="text-dark">Face Recognition not setuped!</p>
+    <script>
+      loading.style.display="none";
+    </script>
+    <p class="text-dark font-weight-bold">Face Recognition not setuped!</p>
     <button class="btn btn-primary" onclick="setupface()">Setup Now</button>
     {% endif %}
   </div>
@@ -45,6 +61,7 @@
   const scan = document.getElementById('scan');
   const img = document.getElementById('pic');
   const facesettupped = document.getElementById('face-already-setup');
+  const loading = document.getElementById('loading');
 
   const vgaconstraints = {
   video: {width: {exact: 720}, height: {exact: 480}},
@@ -72,9 +89,11 @@ function stop(){
 }
 function setupface(){
   facesettupped.style.display="none";
+  loading.style.display="block";
   
   navigator.mediaDevices.getUserMedia(vgaconstraints)
     .then((stream) => {
+      loading.style.display="none";
       // Attach the video stream to the video element and autoplay.
       player.srcObject = stream;
       setTimeout(() => {

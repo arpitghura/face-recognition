@@ -5,7 +5,6 @@ from base64 import b64decode
 import face_recognition
 from firebase_admin import credentials, db, initialize_app, storage
 from flask import Flask, redirect, render_template, request, session, url_for
-from numpy import save
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from flask_session import Session
@@ -219,30 +218,33 @@ def facesetup():
 
             # loading the unknown image by face_recognition
             taken_image = face_recognition.load_image_file('./static/face/'+str(account_username)+'.jpg')
-            
-            # getting the face encodings of the taken image
-            taken_image_encoding = face_recognition.face_encodings(taken_image)[0]
-            
-            if taken_image_encoding:
-                # uploading file to firebase
-                file_name = 'static/face/'+str(account_username)+'.jpg'
-                bucket = storage.bucket()
-                blob = bucket.blob(str(account_username)+'.jpg')
-                blob.upload_from_filename(file_name)
-                # making the uploaded file public
-                blob.make_public()
-                # storing the user image url to the session
-                session['user']['image'] = blob.public_url
-
-                # getting reference of the firebase database
-                ref = db.reference("/users/"+account_username)
-                # update the image data to the photo public url
-                ref.update({'image': blob.public_url})
-                os.remove('./static/face/'+str(account_username)+'.jpg')
-                # redirecting user to the dashboard
-                return redirect("/dashboard")
-            else:
+            try:
+                # getting the face encodings of the taken image
+                taken_image_encoding = face_recognition.face_encodings(taken_image)[0]
+            except:
                 return render_template("facesetup.html", message=1)
+            else:
+                print(taken_image_encoding)
+                if [taken_image_encoding]:
+                    # uploading file to firebase
+                    file_name = 'static/face/'+str(account_username)+'.jpg'
+                    bucket = storage.bucket()
+                    blob = bucket.blob(str(account_username)+'.jpg')
+                    blob.upload_from_filename(file_name)
+                    # making the uploaded file public
+                    blob.make_public()
+                    # storing the user image url to the session
+                    session['user']['image'] = blob.public_url
+
+                    # getting reference of the firebase database
+                    ref = db.reference("/users/"+account_username)
+                    # update the image data to the photo public url
+                    ref.update({'image': blob.public_url})
+                    os.remove('./static/face/'+str(account_username)+'.jpg')
+                    # redirecting user to the dashboard
+                    return redirect("/dashboard")
+                else:
+                    return render_template("facesetup.html", message=1)
         else:
             return render_template("facesetup.html")
 

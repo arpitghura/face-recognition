@@ -6,10 +6,18 @@
 
 {% block main %}
 
-<div class="col-8 m-auto p-2 rounded text-center">
+<div class="col-8 m-auto p-2 rounded text-center" id="message-box">
   {%if message %}
-  <p class="font-weight-bold text-dark">{{message}}</p>
-  {%endif%}
+    <div class="alert alert-success" role="alert">
+      {{ message }}
+    </div>
+    <script>
+      setTimeout(()=>{
+        const msgBox = document.getElementById('message-box');
+        msgBox.style.display = 'none';
+      }, 2000);
+    </script>
+  {% endif %}
 </div>
 
 <div style="width:220;height:240;">
