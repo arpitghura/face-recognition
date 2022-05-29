@@ -2,7 +2,7 @@
 ## Main Theme : Face Recognition System
 ### Usecase : Device Security
 
-This project is a submission project for Microsoft Engage 2022.
+This project is a submission project for Microsoft Engage 2022. Built using Flask Framework of Python
 
 The project is build using `python` language. There are certain libraries that are needed to run this project on the local machine. All of those libraries are given in `requirements.txt` file.
 
@@ -44,8 +44,21 @@ The project is build using `python` language. There are certain libraries that a
 
 9. Enjoy the App!
 
+## Working of App
+<img src="./static/images/flow-diagram.png">
+
 ## Features of the App
 
 1. You can login and signup with your account.
 2. You can setup the Face Id for your account.
 3. You can also login with your Face Id.
+
+## Sample User Id and Password for Login
+
+> You can directly create an dummy account on the web app because th app is built upon cloud database of firebase
+
+Username : demoforengage
+
+Email : demo@engage2022
+
+Password : engage2022
