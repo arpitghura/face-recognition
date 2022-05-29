@@ -1,5 +1,4 @@
 # Face Recogntion System
----
 ## Main Theme : Face Recogntion System
 ### Usecase : Device Security
 
@@ -39,7 +38,7 @@ The project is build using `python` language. There are certain libraries that a
     ```python    
         python app.py
     ```
-7. The app will run on port `5500`, open any browser and navigate to `localhost:5500`, you will able to view the app.
+7. The app will run on port `5000`, open any browser and navigate to `localhost:5000`, you will able to view the app.
 
 8. Make sure you have good internet connection and good lightning in the room where you are using the `face regonition app`.
 
