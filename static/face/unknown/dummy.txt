@@ -1,0 +1,2 @@
+This file is a dummy file. by this file the directories are available 
+which does not cause any harm / error during the application run.

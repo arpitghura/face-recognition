@@ -19,22 +19,21 @@ The project is build using `python` language. There are certain libraries that a
 
     5.1 If you still unable to install dlib on your machine, try installing it using the following steps
     ```text
-        Step 1: pip install cmake
-        Step 2: To Check Python Version Type in cmd python --version
+        Step 1: To Check Python Version Type in cmd python --version
         
-        Step 3: For your version of python install dlib
+        Step 2: For your version of python, change the link of dlib installation in `requirements.txt`
 
         > Python 3.7
-        pip install https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.19.0-cp37-cp37m-win_amd64.whl  
+        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.19.0-cp37-cp37m-win_amd64.whl  
 
         > Python 3.8
-        pip install https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.19.0-cp38-cp38-win_amd64.whl  
+        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.19.0-cp38-cp38-win_amd64.whl  
 
         > Python 3.9
-        pip install https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.22.1-cp39-cp39-win_amd64.whl  
+        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.22.1-cp39-cp39-win_amd64.whl  
 
         > Python 3.10
-        pip install https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.22.99-cp310-cp310-win_amd64.whl  
+        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.22.99-cp310-cp310-win_amd64.whl  
     ```   
 6.  After Installation of all the libraries. you can run the app using the `app.py` python file using the command
     ```python    
