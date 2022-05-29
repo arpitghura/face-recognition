@@ -55,7 +55,7 @@ The project is build using `python` language. There are certain libraries that a
 
 ## Sample User Id and Password for Login
 
-> You can directly create an dummy account on the web app because th app is built upon cloud database of firebase
+> You can directly create an dummy account on the web app because the app is built upon cloud database of firebase
 
 Username : demoforengage
 
