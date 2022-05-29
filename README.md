@@ -1,5 +1,5 @@
-# Face Recogntion System
-## Main Theme : Face Recogntion System
+# Face Recognition System
+## Main Theme : Face Recognition System
 ### Usecase : Device Security
 
 This project is a submission project for Microsoft Engage 2022.
