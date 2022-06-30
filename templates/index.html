@@ -12,19 +12,96 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../static/index.css" />
-    <title>Face Recognition : Device Security</title>
+    <link rel="shortcut icon" href="../static/images/favicon.ico" type="image/x-icon">
+    <title>Face Recognition System : Device Security</title>
   </head>
   <body>
-    <div class="container w-75 text-center app-container">
-      <h1 class="m-2">Welcome to the Face Recognition System</h1>
-      {% if user_session %}
-      <a id="gotoDashboardBtn" class="btn btn-outline-primary rounded me-2" href="/dashboard" type="button" role="button">Go to dashboard</a>
-      <a id="logoutBtn" class="btn btn-outline-danger rounded me-2" href="/logout" type="button" role="button">Logout</a>
-      {% else %}
-      <a id="loginBtn" class="btn btn-outline-primary rounded me-2" href="/signin" type="button" role="button">Login</a>
-      <a id="regBtn" class="btn btn-outline-success rounded me-2" href="/signup" type="button" role="button">Register</a>
-      {% endif %}
+    
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Face Recognition System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#features">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Docs</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            {% if user_session %}
+            <a class="btn btn-outline-warning px-4 rounded me-2" href="/logout" type="button" role="button">Logout</a>
+            {% else %}
+            <a class="btn btn-primary rounded px-4 text-light me-2" href="/signin" type="button" role="button">Login</a>
+            {% endif %}
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
+          <h1 class="display-4 fw-bold lh-1">Face Recognition System</h1>
+          <p class="lead">Quickly secure your accounts using our face Recognition System to protect from unwanted access, getting account hacked and from other vulnerabilities.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+            {% if user_session %}
+            <a type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" href="/dashboard">Dashboard</a>
+            {% else %}
+            <a type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold" href="/signup">Get Started</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg">
+            <img class="rounded-lg-3" src="../static/images/face-recog-hero.jpg" alt="" width="500" height="500">
+        </div>
+      </div>
     </div>
+
+    <div class="container px-4 py-5" id="features">
+      <h2 class="pb-2 border-bottom">Features</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+          </div>
+          <div>
+            <h2>Easy to Use</h2>
+            <p>Face recognition system setup in just 2 minutes. Headover to dashboard and setup it. It is easy to use, during login scan your face and login with your userid.</p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+            <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
+          </div>
+          <div>
+            <h2>Protects account</h2>
+            <p>The Face recognition system validates whether the user trying to login is a valid user or not. It uses strong encoding to track your face resulting in securing your account from vulnerabilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="#features" class="nav-link px-2 text-muted">Features</a></li>
+          <li class="nav-item"><a href="/signin" class="nav-link px-2 text-muted">Login</a></li>
+        </ul>
+        <p class="text-center text-muted">&copy; 2022 <a class="nav-link d-inline" href="https://www.twitter.com/arpitghura"><u>Arpit Ghura</u></a></p>
+      </footer>
+    </div>
+    
+
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

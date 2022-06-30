@@ -22,17 +22,15 @@
 </div>
 
 <div style="width:220;height:240;">
-  <div class="text-center" id="loading">
-    Please Wait! The Camera is Starting up...
-  </div>
   <div class="text-center bg-warning w-50 rounded text-dark p-2" id="face-already-setup">
     {% if imagemsg %}
     <p class="text-dark font-weight-bold">{{ imagemsg }}</p>
     <a href='/dashboard' class="btn btn-primary">Go to Dashboard</a>
+    <a onclick=resetFace() class="btn btn-success text-light">Reset Face Id</a>
     {% else %}
-    <script>
-      loading.style.display="none";
-    </script>
+      <div class="text-center" id="loading">
+        Please Wait! The Camera is Starting up...
+      </div>
     <p class="text-dark font-weight-bold">Face Recognition not setuped!</p>
     <button class="btn btn-primary" onclick="setupface()">Setup Now</button>
     {% endif %}
@@ -51,6 +49,7 @@
     <input type="text" id="pic" name="pic" style="display: none;">
     <button id="scan" style="align-content: center;position: absolute;border-radius: 100px;display: none; left: 52%; top:50%;" class="btn btn-primary">Save</button>
   </form>
+  <p id="facedata" style="display:none">{{ session['user'].get('image') }}</p>
 </div>
 
 <script>
@@ -62,6 +61,7 @@
   const img = document.getElementById('pic');
   const facesettupped = document.getElementById('face-already-setup');
   const loading = document.getElementById('loading');
+  const facedataencoding = document.getElementById('facedata').innerText;
 
   const vgaconstraints = {
   video: {width: {exact: 720}, height: {exact: 480}},
@@ -100,6 +100,11 @@ function setupface(){
         captureButton.style.display="block";
       }, 1000);
     });
+}
+
+function resetFace(){
+  alert("Under Development");
+  // console.log(facedataencoding);
 }
 </script>
 </html>

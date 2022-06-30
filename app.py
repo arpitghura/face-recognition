@@ -20,7 +20,7 @@ app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-
+# for storing session data
 
 @app.route('/')
 def index():
@@ -197,7 +197,7 @@ def facerecog():
 def facesetup():
     # checking the user have already settupped the face recognition or not
     if session['user'].get('image'):
-        return render_template("facesetup.html", imagemsg="Face Recognition already setupped!")
+        return render_template("facesetup.html", imagemsg="Face Recognition already setupped!", facedata = session['user'].get('image'))
     else:
         if request.method == "POST":
             # Get form data
@@ -249,4 +249,5 @@ def facesetup():
             return render_template("facesetup.html")
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
+
