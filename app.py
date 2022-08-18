@@ -11,7 +11,7 @@ from flask_session import Session
 from helper import login_required
 
 # authorizing app to firebase storage and Database
-cred = credentials.Certificate('./face-recognition-01-firebase-adminsdk-3u81p-c07aed38f7.json')
+cred = credentials.Certificate('./services.json')
 databaseURL = 'https://face-recognition-01-default-rtdb.firebaseio.com/'
 initialize_app(cred, {'storageBucket': 'face-recognition-01.appspot.com', 'databaseURL': databaseURL})
 
@@ -249,5 +249,5 @@ def facesetup():
             return render_template("facesetup.html")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 

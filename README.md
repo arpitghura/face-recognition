@@ -16,24 +16,6 @@ The project is build using `python` language. There are certain libraries that a
 
 5. If you face any problem regarding the installation of `dlib` library check whether you have `Visual Studio` with `Visual C++ Tools for Cmake` installed. If not then download it and then install `dlib` library.
 
-    5.1 If you still unable to install dlib on your machine, try installing it using the following steps
-    ```text
-        Step 1: To Check Python Version Type in cmd python --version
-        
-        Step 2: For your version of python, change the link of dlib installation in `requirements.txt`
-
-        > Python 3.7
-        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.19.0-cp37-cp37m-win_amd64.whl  
-
-        > Python 3.8
-        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.19.0-cp38-cp38-win_amd64.whl  
-
-        > Python 3.9
-        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.22.1-cp39-cp39-win_amd64.whl  
-
-        > Python 3.10
-        https://github.com/Murtaza-Saeed/dlib/raw/master/dlib-19.22.99-cp310-cp310-win_amd64.whl  
-    ```   
 6.  After Installation of all the libraries. you can run the app using the `app.py` python file using the command
     ```python    
         python app.py
